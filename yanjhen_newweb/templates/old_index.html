@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMCl Ocean</title>
+    <link rel="stylesheet" href="../static/css/front.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header id="header">
+        <div class="title">NTPU_DMCL sea_project</div>
+        <body onload="ShowTime()">
+            <div class="time_name"></div>
+            <div class="time_box">
+            <div class="time_small" id="time_small"></div>
+            </div>
+        </body>
+    </header>
+
+    <div class="last_data1">
+        <table>
+            <thead>
+                <tr>
+                    <th id="table_title" colspan="7">Latest and Predicted Sea Surface Temperature Data</th>
+                </tr>
+                <tr>
+                    <th>Location</th>
+                    <th>Time</th>
+                    <th>Actual <br> Sea Temperature(℃)</th>
+                    <th>Predicted 1 hour(℃) <br> {{ users[6].time }}</th>
+                    <th>Predicted 2 hours(℃) <br> {{ users[7].time }}</th>
+                    <th>Predicted 3 hours(℃) <br> {{ users[8].time }}</th>
+                    <th>Predicted 4 hours(℃) <br> {{ users[9].time }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dongji</td>
+                    <td>{{ users[1].time }}</td>
+                    <td>{{ users[1].temp }}</td>
+                    <td>{{ users[6].temp }}</td>
+                    <td>{{ users[7].temp }}</td>
+                    <td>{{ users[8].temp }}</td>
+                    <td>{{ users[9].temp }}</td>
+                </tr>
+                <tr>
+                    <td>Jiangjyun</td>
+                    <td>{{ users[2].time }}</td>
+                    <td>{{ users[2].temp }}</td>
+                    <td>{{ users[10].temp }}</td>
+                    <td>{{ users[11].temp }}</td>
+                    <td>{{ users[12].temp }}</td>
+                    <td>{{ users[13].temp }}</td>
+                </tr>
+                <tr>
+                    <td>Jibei</td>
+                    <td>{{ users[3].time }}</td>
+                    <td>{{ users[3].temp }}</td>
+                    <td>{{ users[14].temp }}</td>
+                    <td>{{ users[15].temp }}</td>
+                    <td>{{ users[16].temp }}</td>
+                    <td>{{ users[17].temp }}</td>
+                </tr>
+                <tr>
+                    <td>Penghu</td>
+                    <td>{{ users[4].time }}</td>
+                    <td>{{ users[4].temp }}</td>
+                    <td>{{ users[18].temp }}</td>
+                    <td>{{ users[19].temp }}</td>
+                    <td>{{ users[20].temp }}</td>
+                    <td>{{ users[21].temp }}</td>
+                </tr>
+                <tr>
+                    <td>Wengang</td>
+                    <td>{{ users[5].time}}</td>
+                    <td>{{ users[5].temp }}</td>
+                    <td>{{ users[22].temp }}</td>
+                    <td>{{ users[23].temp }}</td>
+                    <td>{{ users[24].temp }}</td>
+                    <td>{{ users[25].temp }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="last_data2">
+        <table>
+            <thead>
+                <tr>
+                    <th id="table_title" colspan="7">Latest and Predicted Tide Height Data</th>
+                </tr>
+                <tr>
+                    <th>Location</th>
+                    <th>Time</th>
+                    <th>Actual <br> Tide Height(m)</th>
+                    <th>Predicted 1 hour(m) <br> {{ users[26].time }}</th>
+                    <th>Predicted 2 hours(m) <br> {{ users[27].time }}</th>
+                    <th>Predicted 3 hours(m) <br> {{ users[28].time }}</th>
+                    <th>Predicted 4 hours(m) <br> {{ users[29].time }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dongji</td>
+                    <td>{{ users[1].time }}</td>
+                    <td>{{ users[1].tide }}</td>
+                    <td>{{ users[26].tide }}</td>
+                    <td>{{ users[27].tide }}</td>
+                    <td>{{ users[28].tide }}</td>
+                    <td>{{ users[29].tide }}</td>
+                </tr>
+                <tr>
+                    <td>Jiangjyun</td>
+                    <td>{{ users[2].time }}</td>
+                    <td>{{ users[2].tide }}</td>
+                    <td>{{ users[30].tide }}</td>
+                    <td>{{ users[31].tide }}</td>
+                    <td>{{ users[32].tide }}</td>
+                    <td>{{ users[33].tide }}</td>
+                </tr>
+                <tr>
+                    <td>Jibei</td>
+                    <td>{{ users[3].time }}</td>
+                    <td>{{ users[3].tide }}</td>
+                    <td>{{ users[34].tide }}</td>
+                    <td>{{ users[35].tide }}</td>
+                    <td>{{ users[36].tide }}</td>
+                    <td>{{ users[37].tide }}</td>
+                </tr>
+                <tr>
+                    <td>Penghu</td>
+                    <td>{{ users[4].time }}</td>
+                    <td>{{ users[4].tide }}</td>
+                    <td>{{ users[38].tide }}</td>
+                    <td>{{ users[39].tide }}</td>
+                    <td>{{ users[40].tide }}</td>
+                    <td>{{ users[41].tide }}</td>
+                </tr>
+                <tr>
+                    <td>Wengang</td>
+                    <td>{{ users[5].time}}</td>
+                    <td>{{ users[5].tide }}</td>
+                    <td>{{ users[42].tide }}</td>
+                    <td>{{ users[43].tide }}</td>
+                    <td>{{ users[44].tide }}</td>
+                    <td>{{ users[45].tide }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="history_title">History data</div>
+    <div class = "area_title">Choose location:
+        <select id='area' name = "area">
+            <option>area</option>
+            <option value = "dongji">Dongji</option>
+            <option value = "jiangjyun">Jiangjyun</option>
+            <option value = "jibei">Jibei</option>
+            <option value = "penghu">Penghu</option>
+            <option value = "wengang">Wengang</option>
+            <option value = "sea_data">Sensors</option>
+        </select>
+    </div>
+    <table>
+        <tr>
+            <td name="day">start date: <input type="date" id="startday" /></td>
+            <td name="day">end date: <input type="date" id="endday" /></td>
+            <td><input type="button" value="search" onclick="query()" /></td>
+        </tr>
+    </table>
+    <div class="legend">
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox-black" class="black" checked>
+            <label for="checkbox-black">Actual</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox-blue"  class="blue" checked>
+            <label for="checkbox-blue">1 hour</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox-red"  class="red" checked>
+            <label for="checkbox-red">2 hours</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox-orange"  class="orange" checked>
+            <label for="checkbox-orange">3 hours</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox-green" class="green" checked>
+            <label for="checkbox-green">4 hours</label>
+        </div>        
+    </div>
+    <br>
+    <div class="chart" style="position:relative"></div>
+
+    <div class="legend">
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox2-black" class="black" checked>
+            <label for="checkbox2-black">Actual</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox2-blue"  class="blue" checked>
+            <label for="checkbox2-blue">1 hour</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox2-red"  class="red" checked>
+            <label for="checkbox2-red">2 hours</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox2-orange"  class="orange" checked>
+            <label for="checkbox2-orange">3 hours</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox2-green" class="green" checked>
+            <label for="checkbox2-green">4 hours</label>
+        </div>
+    </div>
+    <div class="chart2" style="position:relative"></div>
+
+    <div class="performance_title">Performance Comparison</div>
+
+    <div class = "area_title">Choose locations:
+        <select id='location' name = "location">
+            <option>locaton</option>
+            <option value = "dongji">dongji</option>
+            <option value = "jiangjyun">jiangjyun</option>
+            <option value = "wengang">wengang</option>
+            <option value = "jibei">jibei</option>
+            <option value = "penghu">penghu</option>
+        </select>
+    </div>
+    <div class = "hour_title">Choose hours:
+        <select id='hour' name = "hour">
+            <option>hours</option>
+            <option value = "first_hour">1 hour</option>
+            <option value = "second_hour">2 hours</option>
+            <option value = "third_hour">3 hours</option>
+            <option value = "forth_hour">4 hours</option>
+        </select>
+    </div>
+    <div class = "indicators_title">Choose indicators:
+        <select id='indicators' name = "indicators">
+            <option>indicators</option>
+            <option value = "MAE">MAE</option>
+            <option value = "RMSE">RMSE</option>
+            <option value = "R2">R2</option>
+        </select>
+    </div>
+    <div class = search2>
+        <input type="button" value="search" onclick="query2()" />
+    </div>
+
+    <div class="chart3" style="position:relative"></div>
+    <div class="chart4" style="position:relative"></div>
+
+    <div class="last_data">
+        <table>
+            <thead>
+                <tr>
+                    <th id="table_title" colspan="6">Latest sensors data</th>
+                </tr>
+                <tr>
+                    <th>time</th>
+                    <th>PH</th>
+                    <th>Conductivity</th>
+                    <th>Sea temperature</th>
+                    <th>Dissolved oxygen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ users[0].time }}</td>
+                    <td>{{ users[0].PHvalue }}</td>
+                    <td>{{ users[0].Conductivity }}</td>
+                    <td>{{ users[0].Temperrature}}</td>
+                    <td>{{ users[0].DO}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="../static/js/front.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+</body>
+
+<footer class="foot">       
+    <div class="name">計畫名稱:建置創新海上箱網養殖平台與監控系統--子計畫二:在UIoT環境下以集成多特徵深度學習之水質及水產產能預測之研究</div>
+    <div class="number">計畫編號:111-2221-E-305-011-MY3</div>
+    <div class="planer">執行單位:國立臺北大學資訊工程學系</div>
+</footer>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/performance.css">
+    <title>預測模型比較(地點)</title>
+</head>
+<body>
+    <header class="header">
+        <div class="info">
+            <div class="name">計畫名稱:建置創新海上箱網養殖平台與監控系統--子計畫二:在UIoT環境下以集成多特徵深度學習之水質及水產產能預測之研究</div>
+            <br>
+            <div class="number">計畫編號:111-2221-E-305-011-MY3</div>
+            <br>
+            <div class="planer">執行單位:國立臺北大學資訊工程學系</div>
+            <br>
+            <img id='pic1' src="../static/image/aaaaaa.png">
+            <img id='pic2' src="../static/image/aaaa.png">
+            <img id='pic3' src="../static/image/aaaaa.png">
+            <img id='pic4' src="../static/image/aaa.png">
+            <!-- <img id='pic5' src="../static/image/-1.png"> -->
+            <img id='pic6' src="../static/image/aaaaaaa.png"> 
+            
+    
+            <!-- <img id='pic7' src="../static/sea1.png"> -->
+    
+            <!-- <div class="time" id="time"></div>  -->
+        </div>
+        </header>
+        <nav >
+            <ul class="style">
+                <li class="aa">
+                    <a href="{{ url_for('user') }}">最新預測資料</a>
+                </li>
+                <li class="aa">
+                    <a href="{{ url_for('sea_data') }}">歷史預測資料</a>
+                </li>
+                <li class="aa">
+                    <a href="{{ url_for('predict_model2') }}">預測模型比較(時間)</a>
+                </li>
+                <li class="aa">
+                    <a href="{{url_for('sensors_data')}}">多感測器資料</a>
+                </li>
+            </ul>
+            <br>
+            <br>
+            <br>
+        </nav>
+    <div class="performance_title">Performance Comparison</div>
+    <div class="grid-container">
+        <div class="explain_title">Tips</div>
+        <div class="explain">1. The time for predicting data starts from June 2, 2023.</div>
+        <div class="explain">2. You will need to wait a few seconds after pressing "search" for the chart to appear.</div>
+        <div class="explain">3. If the R2 value is negative, it will not be displayed.</div>
+      </div>
+    <table>
+        <tr>
+            <td name="day">Start date: <input type="date" id="startday2" /></td>
+            <td name="day">End date: <input type="date" id="endday2" /></td>
+        </tr>
+    </table>
+
+    <div class = "kind_title">Choose temp or tide
+        <select name="kind" id="kind">
+            <option value="Sea temperature">Sea temperature</option>
+            <option value="Tide height">Tide height</option>
+        </select>
+    </div>
+
+    <div class = "hour_title">Choose hours:
+        <select id='hour' name = "hour">
+            <option>hours</option>
+            <option value = "1">1 hour</option>
+            <option value = "2">2 hours</option>
+            <option value = "3">3 hours</option>
+            <option value = "4">4 hours</option>
+            <option value = "5">5 hours</option>
+            <option value = "6">6 hours</option>
+            <option value = "7">7 hours</option>
+            <option value = "8">8 hours</option>
+        </select>
+    </div>
+    <div class = "indicators_title">Choose indicators:
+        <select id='indicators' name = "indicators">
+            <option>indicators</option>
+            <option value = "MAE">MAE</option>
+            <option value = "RMSE">RMSE</option>
+            <option value = "R2">R2</option>
+        </select>
+    </div>
+    <div class = search2>
+        <input type="button" value="search" onclick="query2()" />
+    </div>
+
+    <div class="chart3" style="position:relative"></div>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Location</th>
+                <th>MLR</th>
+                <th>ADA</th>
+                <th>LSTM</th>
+                <th>MAE</th>
+                <th>RF</th>
+                <th>SAM</th>
+                <th>SVM</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+    </table>
+
+
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="../static/js/front.js"></script>
+</body>
+</html>

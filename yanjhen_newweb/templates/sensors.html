@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/latest_data.css">
+</head>
+<body>
+    <header class="header">
+        <div class="info">
+            <div class="name">計畫名稱:建置創新海上箱網養殖平台與監控系統--子計畫二:在UIoT環境下以集成多特徵深度學習之水質及水產產能預測之研究</div>
+            <br>
+            <div class="number">計畫編號:111-2221-E-305-011-MY3</div>
+            <br>
+            <div class="planer">執行單位:國立臺北大學資訊工程學系</div>
+            <img id='pic1' src="../static/image/aaaaaa.png">
+            <img id='pic2' src="../static/image/aaaa.png">
+            <img id='pic3' src="../static/image/aaaaa.png">
+            <img id='pic4' src="../static/image/aaa.png">
+            <!-- <img id='pic5' src="../static/image/-1.png"> -->
+            <img id='pic6' src="../static/image/aaaaaaa.png">  
+            
+            <br>
+            <!-- <img id='pic7' src="../static/sea1.png"> -->
+    
+            <!-- <div class="time" id="time"></div>  -->
+        </div>
+        </header>
+        <nav >
+            <ul class="style">
+                <li class="aa">
+                    <a href="{{ url_for('user') }}">最新預測資料</a>
+                </li>
+                <li class="aa">
+                    <a href="{{ url_for('sea_data') }}">歷史預測資料</a>
+                </li>
+                <li class="aa">
+                    <a href="{{ url_for('predict_model') }}">預測模型比較(地點)</a>
+                </li>
+                <li class="aa">
+                    <a href="{{ url_for('predict_model2') }}">預測模型比較(時間)</a>
+                </li>
+            </ul>
+            <br>
+            <br>
+            <br>
+        </nav>
+        <br>
+
+        <div class="last_data">
+            <table>
+                <thead>
+                    <tr>
+                        <th id="table_title" colspan="6">最新感測器數據</th>
+                    </tr>
+                    <tr>
+                        <th>time</th>
+                        <th>PH</th>
+                        <th>Conductivity</th>
+                        <th>Sea temperature</th>
+                        <th>Dissolved oxygen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ users[0].time }}</td>
+                        <td>{{ users[0].PHvalue }}</td>
+                        <td>{{ users[0].Conductivity }}</td>
+                        <td>{{ users[0].Temperrature}}</td>
+                        <td>{{ users[0].DO}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+</body>
+</html>

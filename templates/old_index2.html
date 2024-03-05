@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        h1 {
+            z-index: 1;
+            opacity: 0.8;
+            font-size: 50px;
+            padding-bottom: 250px;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: colorchange 10s infinite alternate;
+        }
+
+        .video-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 0;
+        }
+
+        .user {
+            z-index: 1;
+            opacity: 0.8;
+            font-size: 50px;
+            padding-bottom: 250px;
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: colorchange 10s infinite alternate;
+        }
+
+        input[type="text"] {
+            /* 样式化文本输入字段 */
+            width: 200px;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="password"] {
+            /* 样式化文本输入字段 */
+            width: 200px;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+             /* 样式化按钮 */
+            padding: 10px 20px;
+            background-color: #418DCD;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 80px; /* 向右移动按钮，根据需要调整外边距值 */
+            width: 90%; /* 让输入框和按钮占据整个容器的宽度 */
+            margin: 10px 0; /* 调整间距 */
+        }
+
+        .user-container {
+    background: rgba(255, 255, 255, 0.3); /* 设置透明背景色 */
+    border-radius: 10px; /* 添加圆角边框 */
+    padding: 20px; /* 添加内边距以增加间距 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* 确保在文本和视频背景之上 */
+}
+
+/* 调整输入框和按钮样式 */
+.user-container input[type="text"],
+.user-container input[type="password"],
+.user-container button {
+    width: 85%; /* 让输入框和按钮占据整个容器的宽度 */
+    margin: 10px 0; /* 调整间距 */
+}
+
+/* 添加一个阴影以突出显示容器 */
+.user-container {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+        @keyframes colorchange {
+            0% {color: #418DCD;}
+            10% {color: #17b473;}
+            20% {color: #c65d20;}
+            30% {color: #a341cd;}
+            40% {color: #03965B;}
+            50% {color: #e91748;}
+            60% {color: #545C5E;}
+            70% {color: #545C5E;}
+            80% {color: #032596;}
+            90% {color: #409603;}
+            100% {color: #418DCD;}
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                z-index: 3;
+                opacity: 1;
+                font-size: 21px;
+                position: absolute;
+                top: 30%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                /* animation:colorchange 10s infinite alternate; */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>測試登陸入口</h1>
+        <video class="video-back" autoplay loop muted>
+            <source src="{{ url_for('static', filename='ocean.mp4') }}">
+        </video>
+    </div>
+    <div class="user-container"> <!-- 包裹登录表单的容器 -->
+        <form method="POST" action="{{url_for('index0')}}">
+            <div>
+                <input type="text" name="number" placeholder="請輸入帳號">
+            </div>
+            <div>
+                <input type="password" name="number1" placeholder="請輸入密碼">
+            </div>
+            <div>
+                <button type="submit">登陸</button>
+            </div>
+        </form>
+    </div>
+    {% if login_failure %}
+    <script>
+        alert("帳號或密碼輸入錯誤，請嘗試重新登錄。");
+    </script>
+    {% endif %}
+</body>
+</html>

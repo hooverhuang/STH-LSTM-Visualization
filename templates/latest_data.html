@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMCl Ocean</title>
+    <link rel="stylesheet" href="../static/css/latest_data.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> 
+</head>
+<body>
+    <div class="header">
+        <div class="info">
+            <div class="name">計畫名稱:建置創新海上箱網養殖平台與監控系統--子計畫二:在UIoT環境下以集成多特徵深度學習之水質及水產產能預測之研究</div>
+            <br>
+            <div class="number">計畫編號:111-2221-E-305-011-MY3</div>
+            <br>
+            <div class="planer">執行單位:國立臺北大學資訊工程學系</div>
+            <br>
+            <br>
+            <nav>
+                <ul class="style">
+                    <li class="aa">
+                        <a href="{{ url_for('user') }}"></a>
+                    </li>
+                    <li class="aa">
+                        <a href="{{ url_for('sea_data') }}">歷史預測資料</a>
+                    </li>
+                    <li class="aa">
+                        <a href="{{ url_for('predict_model') }}">預測模型比較(地點)</a>
+                    </li>
+                    <li class="aa">
+                        <a href="{{ url_for('predict_model2') }}">預測模型比較(時間)</a>
+                    </li>
+                    <li class="aa">
+                        <a href="{{url_for('sensors_data')}}">多感測器資料</a>
+                    </li>
+                </ul>
+            </nav>
+            <br>
+            <br>
+                <img id='pic1' src="../static/image/aaaaaa.png">
+                <img id='pic2' src="../static/image/aaaa.png">
+                <img id='pic3' src="../static/image/aaaaa.png">
+                <img id='pic4' src="../static/image/aaa.png">
+                <!-- <img id='pic5' src="../static/image/-1.png"> -->
+                <img id='pic6' src="../static/image/aaaaaaa.png"> 
+            
+        </div>
+    </div>    
+    <div class="last_data1">
+        <table>
+            <thead>
+                <tr>
+                    <th class="table_title" colspan="11">最新和預測的海面溫度數據 ! </th>
+                </tr>
+                <tr>
+                    <th>Location</th>
+                    <th>Time</th>
+                    <th>Actual <br> Sea Temperature(℃)</th>
+                    {% for i in range(6, 14) %}
+                    <th>Predicted {{ i-5 }} hour(℃) <br> {{ users[i].time }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dongji</td>
+                    <td>{{ users[1].time }}</td>
+                    <td>{{ users[1].temp }}</td>
+                    {% for i in range(6, 14) %}
+                    <td>{{ users[i].temp }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Jiangjyun</td>
+                    <td>{{ users[2].time }}</td>
+                    <td>{{ users[2].temp }}</td>
+                    {% for i in range(14, 22) %}
+                    <td>{{ users[i].temp }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Jibei</td>
+                    <td>{{ users[3].time }}</td>
+                    <td>{{ users[3].temp }}</td>
+                    {% for i in range(22, 30) %}
+                    <td>{{ users[i].temp }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Penghu</td>
+                    <td>{{ users[4].time }}</td>
+                    <td>{{ users[4].temp }}</td>
+                    {% for i in range(30, 38) %}
+                    <td>{{ users[i].temp }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Wengang</td>
+                    <td>{{ users[5].time}}</td>
+                    <td>{{ users[5].temp }}</td>
+                    {% for i in range(38, 46) %}
+                    <td>{{ users[i].temp }}</td>
+                    {% endfor %}
+                </tr>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+
+    <div class="last_data2">
+        <table>
+            <thead>
+                <tr>
+                    <th class="table_title" colspan="11">最新和預測的潮汐高度數據 ! </th>
+                </tr>
+                <tr>
+                    <th>Location</th>
+                    <th>Time</th>
+                    <th>Actual <br> Tide Height(m)</th>
+                    {% for i in range(46, 54) %}
+                    <th>Predicted {{ i-45 }} hour(m) <br> {{ users[i].time }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dongji</td>
+                    <td>{{ users[1].time }}</td>
+                    <td>{{ users[1].tide }}</td>
+                    {% for i in range(46, 54) %}
+                    <td>{{ users[i].tide }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Jiangjyun</td>
+                    <td>{{ users[2].time }}</td>
+                    <td>{{ users[2].tide }}</td>
+                    {% for i in range(54, 62) %}
+                    <td>{{ users[i].tide }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Jibei</td>
+                    <td>{{ users[3].time }}</td>
+                    <td>{{ users[3].tide }}</td>
+                    {% for i in range(62, 70) %}
+                    <td>{{ users[i].tide }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Penghu</td>
+                    <td>{{ users[4].time }}</td>
+                    <td>{{ users[4].tide }}</td>
+                    {% for i in range(70, 78) %}
+                    <td>{{ users[i].tide }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Wengang</td>
+                    <td>{{ users[5].time}}</td>
+                    <td>{{ users[5].tide }}</td>
+                    {% for i in range(78, 86) %}
+                    <td>{{ users[i].tide }}</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="last_data">
+        <table>
+            <thead>
+                <tr>
+                    <th class="table_title" colspan="6">最新感測器數據</th>
+                </tr>
+                <tr>
+                    <th>time</th>
+                    <th>PH</th>
+                    <th>Conductivity</th>
+                    <th>Sea temperature</th>
+                    <th>Dissolved oxygen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ users[0].time }}</td>
+                    <td>{{ users[0].PHvalue }}</td>
+                    <td>{{ users[0].Conductivity }}</td>
+                    <td>{{ users[0].Temperrature}}</td>
+                    <td>{{ users[0].DO}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="../static/js/front.js"></script>
+
+</body>
+</html>

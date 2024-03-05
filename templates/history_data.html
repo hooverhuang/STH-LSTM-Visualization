@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/history_data.css">
+    <title>歷史預測資料</title>
+</head>
+<body>
+    <header class="header">
+        <div class="info">
+            <div class="name">計畫名稱:建置創新海上箱網養殖平台與監控系統--子計畫二:在UIoT環境下以集成多特徵深度學習之水質及水產產能預測之研究</div>
+            <br>
+            <div class="number">計畫編號:111-2221-E-305-011-MY3</div>
+            <br>
+            <div class="planer">執行單位:國立臺北大學資訊工程學系</div>
+            <img id='pic1' src="../static/image/aaaaaa.png">
+            <img id='pic2' src="../static/image/aaaa.png">
+            <img id='pic3' src="../static/image/aaaaa.png">
+            <img id='pic4' src="../static/image/aaa.png">
+            <!-- <img id='pic5' src="../static/image/-1.png"> -->
+            <img id='pic6' src="../static/image/aaaaaaa.png"> 
+            
+            <br>
+            <!-- <img id='pic7' src="../static/sea1.png"> -->
+    
+            <!-- <div class="time" id="time"></div>  -->
+        </div>
+        </header>
+        <nav >
+            <ul class="style">
+                <li class="aa">
+                    <a href="{{ url_for('user') }}">最新預測資料</a>
+                </li>
+                <li class="aa">
+                    <a href="{{ url_for('predict_model') }}">預測模型比較(地點)</a>
+                </li>
+                <li class="aa">
+                    <a href="{{ url_for('predict_model2') }}">預測模型比較(時間)</a>
+                </li>
+                <li class="aa">
+                    <a href="{{url_for('sensors_data')}}">多感測器資料</a>
+                </li>
+            </ul>
+            <br>
+            <br>
+            <br>
+        </nav>
+
+    <div class="history_title">History data</div>
+    <div class="grid-container">
+        <div class="explain_title">Tips</div>
+        <div class="explain">1. The time for actual data starts from Januany 4, 2020.</div>
+        <div class="explain">2. The time for predicted data starts from June 2, 2023.</div>
+      </div>
+
+    <div class = "area_title">Choose location:
+        <select id='area' name = "area">
+            <option>area</option>
+            <option value = "dongji">Dongji</option>
+            <option value = "jiangjyun">Jiangjyun</option>
+            <option value = "jibei">Jibei</option>
+            <option value = "penghu">Penghu</option>
+            <option value = "wengang">Wengang</option>
+        </select>
+    </div>
+
+    <table>
+        <tr>
+            <td name="day">Start date: <input type="date" id="startday" /></td>
+            <td name="day">End date: <input type="date" id="endday" /></td>
+            <td><input type="button" value="search" onclick="query()" /></td>
+        </tr>
+    </table>
+    <div class="legend">
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox-black" class="black" checked>
+            <label for="checkbox-black">Actual</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox-blue"  class="blue" checked>
+            <label for="checkbox-blue">1 hour</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox-red"  class="red" checked>
+            <label for="checkbox-red">2 hours</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox-orange"  class="orange" checked>
+            <label for="checkbox-orange">3 hours</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox-green" class="green" checked>
+            <label for="checkbox-green">4 hours</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox-navy" class="navy" checked>
+            <label for="checkbox-navy">5 hours</label>
+        </div>        
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox-lime" class="lime" checked>
+            <label for="checkbox-lime">6 hours</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox-orchid" class="orchid" checked>
+            <label for="checkbox-orchid">7 hours</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox-brown" class="brown" checked>
+            <label for="checkbox-brown">8 hours</label>
+        </div>
+    </div>
+    
+    <br>
+    <div class="chart" style="position:relative"></div>
+
+    <div class="legend">
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox2-black" class="black" checked>
+            <label for="checkbox2-black">Actual</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox2-blue"  class="blue" checked>
+            <label for="checkbox2-blue">1 hour</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox2-red"  class="red" checked>
+            <label for="checkbox2-red">2 hours</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox2-orange"  class="orange" checked>
+            <label for="checkbox2-orange">3 hours</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox2-green" class="green" checked>
+            <label for="checkbox2-green">4 hours</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox2-navy" class="navy" checked>
+            <label for="checkbox-navy">5 hours</label>
+        </div>        
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox2-lime" class="lime" checked>
+            <label for="checkbox-lime">6 hours</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox2-orchid" class="orchid" checked>
+            <label for="checkbox-orchid">7 hours</label>
+        </div>
+        <div class="spacer"></div>
+        <div class="legend-item">
+            <input type="checkbox" id="checkbox2-brown" class="brown" checked>
+            <label for="checkbox-brown">8 hours</label>
+        </div>
+
+    </div>
+    <br>
+
+    <div class="chart2" style="position:relative"></div>
+
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="../static/js/front.js"></script>
+</body>
+</html>
