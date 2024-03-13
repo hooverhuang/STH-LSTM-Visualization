@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 import re
 
-client = MongoClient('mongodb://dmcl:unigrid@10.141.52.16:27017/?authMechanism=DEFAULT')
+client = MongoClient()
 db1 = client["temp+tide"]
 db2 = client.Mlr_predict
 
